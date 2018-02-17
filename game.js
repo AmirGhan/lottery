@@ -7,8 +7,8 @@ module.exports = class Game {
 		this.tickets = [];
 	}
 
-	purchase() {
-		let ticket = new Ticket();
+	purchase(name) {
+		let ticket = new Ticket(name);
 		// let ticket = new Ticket(name, ticket.length + 1);
 		// this.tickets.push (ticket);
 		return ticket;
