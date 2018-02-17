@@ -2,7 +2,7 @@ const Pot = require('./pot')
 const Ticket = require('./ticket')
 
 module.exports = class Game {
-	consructor () {
+	constructor () {
 		this.pot = new Pot();
 		this.tickets = [];
 	}
@@ -10,7 +10,8 @@ module.exports = class Game {
 	purchase(name) {
 		let ticketNumber = this.tickets.length + 1
 		let ticket = new Ticket(name, ticketNumber);
-		// this.tickets.push (ticket);
+		this.tickets.push (ticket);
+		let currentPot = this.pot.increase()
 		return ticket;
 	}
 }

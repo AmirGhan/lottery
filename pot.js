@@ -1,8 +1,14 @@
 module.exports = class Pot {
   constructor() {
+    this.value = 200;
     this.reset();
   }
+
+  increase() {
+    return this.value += 10;
+  }
+
   reset() {
-    let value = 200;
+    this.value = 200;
   }
 }

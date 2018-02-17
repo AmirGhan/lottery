@@ -1,7 +1,8 @@
 
 const readline = require('readline');
 
-const Game = new (require('./game'))();
+const Game = require('./game');
+const game = new Game()
 
 function init() {
 
@@ -20,7 +21,7 @@ rl.on('line', function(line) {
 	if (line.startsWith('purchase')) {
 		let name = line.split('').slice(9).join('')
 		 if (name.length > 0) {
-		 	let ticket = Game.purchase(name)
+		 	let ticket = game.purchase(name)
       console.log("Purchased By: " + ticket.name + " , Ticket number: " + ticket.num + ", Price: " + ticket.val);
 		 } else {
 		 	console.log("You must enter a name after 'purchase' command");
