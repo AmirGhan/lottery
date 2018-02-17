@@ -12,6 +12,7 @@ module.exports = class Game {
 		let ticket = new Ticket(name, ticketNumber);
 		this.tickets.push (ticket);
 		let currentPot = this.pot.increase()
+		console.log("Pot amount: " + currentPot)
 		return ticket;
 	}
 }

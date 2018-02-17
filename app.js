@@ -1,8 +1,8 @@
 
 const readline = require('readline');
 
-const Game = require('./game');
-const game = new Game()
+const Game = new (require('./game'))();
+
 
 function init() {
 
@@ -21,12 +21,12 @@ rl.on('line', function(line) {
 	if (line.startsWith('purchase')) {
 		let name = line.split('').slice(9).join('')
 		 if (name.length > 0) {
-		 	let ticket = game.purchase(name)
+		 	let ticket = Game.purchase(name)
       console.log("Purchased By: " + ticket.name + " , Ticket number: " + ticket.num + ", Price: " + ticket.val);
 		 } else {
 		 	console.log("You must enter a name after 'purchase' command");
 		 }
-   }
+  }
 	//  else if (line.tirm() === 'draw')
   //
   //   rl.prompt();
