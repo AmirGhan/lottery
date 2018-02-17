@@ -8,8 +8,8 @@ module.exports = class Game {
 	}
 
 	purchase(name) {
-		let ticket = new Ticket(name);
-		// let ticket = new Ticket(name, ticket.length + 1);
+		let ticketNumber = this.tickets.length + 1
+		let ticket = new Ticket(name, ticketNumber);
 		// this.tickets.push (ticket);
 		return ticket;
 	}

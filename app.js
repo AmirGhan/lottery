@@ -23,7 +23,7 @@ rl.on('line', function(line) {
 		 	let ticket = Game.purchase(name)
       console.log("Purchased By: " + ticket.name + " , Ticket number: " + ticket.num + ", Price: " + ticket.val);
 		 } else {
-		 	console.log('Say what? I might have heard `' + line.trim() + '`');
+		 	console.log("You must enter a name after 'purchase' command");
 		 }
    }
 	//  else if (line.tirm() === 'draw')
