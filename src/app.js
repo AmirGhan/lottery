@@ -1,15 +1,6 @@
 
 const readline = require('readline');
-
 const Game = new (require('./game'))();
-
-
-function init() {
-
-	// Welcome to game
-}
-
-init();
 
 
 const rl = readline.createInterface(process.stdin, process.stdout);
