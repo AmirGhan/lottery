@@ -1,14 +1,21 @@
+const DEFAULT_VALUE = 200;
+
 module.exports = class Pot {
   constructor() {
-    this.value = 200;
+    this.value = DEFAULT_VALUE;
     this.reset();
   }
 
   increase() {
-    return this.value += 10;
+    this.value += 10;
   }
 
+  winningPot(){
+    let halfPot = Math.floor(this.value / 2)
+    this.value -= halfPot
+    return halfPot
+  }
   reset() {
-    this.value = 200;
+    this.value = DEFAULT_VALUE;
   }
 }

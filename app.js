@@ -19,17 +19,18 @@ rl.prompt();
 
 rl.on('line', function(line) {
 	if (line.startsWith('purchase')) {
-		let name = line.split('').slice(9).join('')
+		let name = line.split('').slice(9).join('');
 		 if (name.length > 0) {
-		 	let ticket = Game.purchase(name)
+		 	let ticket = Game.purchase(name);
       console.log("Purchased By: " + ticket.name + " , Ticket number: " + ticket.num + ", Price: " + ticket.val);
 		 } else {
 		 	console.log("You must enter a name after 'purchase' command");
 		 }
+  } else if (line.trim() === 'draw') {
+    Game.draw();
   }
-	//  else if (line.tirm() === 'draw')
-  //
-  //   rl.prompt();
+
+    rl.prompt();
 })
 
 rl.on('close', function() {
