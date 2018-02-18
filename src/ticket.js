@@ -4,5 +4,4 @@ module.exports = class Ticket {
     this.num = ticketNumber;
     this.val = "$10";
   }
-
 }

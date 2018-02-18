@@ -1,6 +1,8 @@
-const Pot = require('./pot')
-const Ticket = require('./ticket')
-const Winner = require('./winner')
+const Pot = require('./pot');
+const Ticket = require('./ticket');
+const Winner = require('./winner');
+
+const maxTickets = 50;
 
 module.exports = class Game {
 	constructor () {
@@ -11,7 +13,7 @@ module.exports = class Game {
 	}
 
 	purchase(name) {
-		if (this.tickets.length < 50) { // Ensuring maximum 50 tickets can be purchased
+		if (this.tickets.length < maxTickets) { // e.g. Ensuring maximum 50 tickets can be purchased
 			let ticketNumber = this.tickets.length + 1;
 			let ticket = new Ticket(name, ticketNumber);
 			this.tickets.push (ticket);
@@ -23,21 +25,21 @@ module.exports = class Game {
 	}
 
 	draw() {
-		// Generating 3 unique random numbers for the draw
-		let randomArr = []
-		while(randomArr.length < 3){
-    	let randomNumber = Math.floor(Math.random() * 5);
-    	if(randomArr.includes(randomNumber)) continue;
-    	randomArr.push(randomNumber);
+		// Generating unique random numbers for the draw
+		let randomArr = [];
+		while(randomArr.length < this.percentage.length){ // to change number of winners, add/remove percentages
+			let randomNumber = Math.floor(Math.random() * maxTickets);
+			if(randomArr.includes(randomNumber)) continue;
+			randomArr.push(randomNumber);
 		}
-		// Value of the winnable pot
-		let value = this.pot.winningPot();
-		console.log("Winnable Value of the Pot: $" + value);
 
-    // Matching 3 winner numbers with tickets and prize percentage
+		// Value of the winnable pot
+		let winnablePot = this.pot.winningPot();
+
+    // Matching winner numbers with tickets and prize percentage
 		for (let i = 0; i < randomArr.length; i++) {
 			let ticketInfo = this.tickets[randomArr[i]];
-			let prizeValue = Math.floor(this.percentage[i] * value);
+			let prizeValue = Math.floor(this.percentage[i] * winnablePot);
 			if (ticketInfo) { // Matched with a purchased ticket
 				let winner = new Winner(i + 1, ticketInfo.num, ticketInfo.name, prizeValue);
 				this.winners.push(winner);
@@ -47,11 +49,11 @@ module.exports = class Game {
 				this.pot.increase(prizeValue); // Transferring the unused amount back to the pot
 			}
 		}
-
+		return winnablePot;
 	}
 
-	winner() {
-		console.log(this.winners);
+	result() {
+		return this.winners
 	}
 
 	restart() {

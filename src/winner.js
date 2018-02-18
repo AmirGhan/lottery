@@ -5,5 +5,4 @@ module.exports = class Winner {
     this.ticketName = ticketName;
     this.prizeVal = value;
   }
-
 }
