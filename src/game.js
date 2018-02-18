@@ -1,11 +1,12 @@
 const Pot = require('./pot')
 const Ticket = require('./ticket')
+const Winner = require('./winner')
 
 module.exports = class Game {
 	constructor () {
 		this.pot = new Pot();
 		this.tickets = [];
-		this.prizes = [];
+		this.winners = [];
 		this.percentage = [0.75, 0.15, 0.10];
 	}
 
@@ -33,13 +34,20 @@ module.exports = class Game {
 		console.log(value)
 
 		for (let i = 0; i < randomArr.length; i++) {
-			if (this.tickets[randomArr[i]]) {
-				let prizeValue = this.percentage[i] * value
-				console.log(prizeValue)
+			let ticketInfo = this.tickets[randomArr[i]];
+			let prizeValue = this.percentage[i] * value;
+			if (ticketInfo) {
+				let winner = new Winner(i + 1, ticketInfo.num, ticketInfo.name, prizeValue)
+				this.winners.push(winner)
+			} else {
+				let ticketName = "NULL"
+				let prizeValue = "N/A"
+				let noWinner = new Winner(i + 1, randomArr[i], ticketName, prizeValue)
+				this.winners.push(noWinner)
 			}
 		}
-		// check if the winnerNum is valid
-		// if yes, add the ticket to the winners
+		console.log(this.winners)
+
 	}
 
 	restart() {

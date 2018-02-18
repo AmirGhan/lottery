@@ -6,8 +6,8 @@ module.exports = class Pot {
     this.reset();
   }
 
-  increase() {
-    this.value += 10;
+  increase(val = 10) {
+    this.value += val;
   }
 
   winningPot(){
