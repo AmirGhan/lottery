@@ -21,7 +21,6 @@ module.exports = class Game {
 	}
 
 	draw() {
-		// ensure that the numbers are unique
 		let randomArr = []
 		while(randomArr.length < 3){
     	let randomNumber = Math.floor(Math.random() * 5);
@@ -39,10 +38,8 @@ module.exports = class Game {
 			if (ticketInfo) {
 				let winner = new Winner(i + 1, ticketInfo.num, ticketInfo.name, prizeValue)
 				this.winners.push(winner)
-			} else {
-				let ticketName = "NULL"
-				let prizeValue = "N/A"
-				let noWinner = new Winner(i + 1, randomArr[i], ticketName, prizeValue)
+			} else {				
+				let noWinner = new Winner(i + 1, randomArr[i] + 1, "NULL", prizeValue)
 				this.winners.push(noWinner)
 			}
 		}
