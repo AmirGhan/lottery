@@ -3,7 +3,6 @@ const DEFAULT_VALUE = 200;
 module.exports = class Pot {
   constructor() {
     this.value = DEFAULT_VALUE;
-    this.reset();
   }
 
   increase(val = 10) {

@@ -29,7 +29,7 @@ module.exports = class Game {
 		}
 
 		let value = this.pot.winningPot();
-		console.log("Value of the Pot: $" + value);
+		console.log("Winnable Value of the Pot: $" + value);
 
 		for (let i = 0; i < randomArr.length; i++) {
 			let ticketInfo = this.tickets[randomArr[i]];
