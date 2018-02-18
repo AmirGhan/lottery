@@ -11,9 +11,9 @@ module.exports = class Pot {
   }
 
   winningPot(){
-    let halfPot = Math.floor(this.value / 2)
-    this.value -= halfPot
-    return halfPot
+    let halfPot = Math.floor(this.value / 2);
+    this.value -= halfPot;
+    return halfPot;
   }
   reset() {
     this.value = DEFAULT_VALUE;

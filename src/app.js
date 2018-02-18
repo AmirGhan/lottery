@@ -28,6 +28,10 @@ rl.on('line', function(line) {
 		 }
   } else if (line.trim() === 'draw') {
     Game.draw();
+  } else if (line.trim() === 'winners') {
+    Game.winner();
+  } else if (line.trim() === 'restart') {
+    Game.restart();
   }
 
     rl.prompt();
