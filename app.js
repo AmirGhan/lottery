@@ -1,6 +1,6 @@
 
 const readline = require('readline');
-const game = new (require('./game'))();
+const game = new (require('./src/game'))();
 
 function init() {
   console.log(
