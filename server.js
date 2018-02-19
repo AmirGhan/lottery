@@ -1,15 +1,20 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 const PORT = 3000;
 const game = new (require('./src/game'))();
 
+app.use(bodyParser.urlencoded({extended: true}));
+app.set("view engine", "ejs");
+
 app.get("/", function(req, res) {
-  res.send("Hellooooo")
+  res.render("index")
 });
 
 app.post("/purchase", function(req, res) {
-  let ticket = game.purchase("Amir");
+  let ticket = game.purchase(req.body.name);
   console.log("Purchased By: " + ticket.name + " , Ticket number: " + ticket.num + ", Price: " + ticket.val);
+  res.redirect("/")
 });
 
 app.post("/draw", function(req, res) {
