@@ -8,15 +8,32 @@
   <body>
     <h1>Welcome to the Lottery App</h1>
 
-    <form method="POST" action="/purchase">
+    <form method="POST" action="/purchase" id="purchase">
       <div>
         <label>Enter your name to buy a ticket:</label>
         <input type="text" name="name" required>
         <input type="submit" value="Purchase">
       </div>
     </form>
+
+    <form method="POST" action="/draw" id="draw">
+        <input type="submit" value="draw">
+    </form>
+
+    <form method="POST" action="/winners" id="winners">
+        <input type="submit" value="winners">
+    </form>
     
-    <button type="button" name="button"></button>
+    <form method="POST" action="/restart">
+        <input type="submit" value="restart">
+    </form>
+
+    <section id="winnersArticle">
+
+    </section>
+    <section id="winnablePot">
+
+    </section>
     <section id="tickets">
 
     </section>

@@ -53,7 +53,7 @@ module.exports = class Game {
 	}
 
 	result() {
-		return this.winners
+		return this.winners.slice(Math.max(this.winners.length - this.percentage.length, 0)) // to give the last n number of winners
 	}
 
 	restart() {

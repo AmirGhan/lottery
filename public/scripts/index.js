@@ -3,7 +3,7 @@ $( document ).ready(function() {
 //==============================================================================
 // Sending the buyer name to the server and recieve back the ticket
 //==============================================================================
-  $("form").submit(function (event) {
+  $("#purchase").submit(function (event) {
     event.preventDefault();
     let data = $(this).serialize();
     $.ajax({
@@ -33,6 +33,57 @@ $( document ).ready(function() {
   };
 
 
+  //==============================================================================
+  // DRAW
+  //==============================================================================
+  $("#draw").submit(function (event) {
+    event.preventDefault();
+    $.ajax({
+    url: '/draw',
+    method: 'POST',
+    success: function (pot) {
+      printPot(pot);
+    }
+    });
+
+  });
+
+  function printPot(pot) {
+    let $container = $("#winnablePot");
+    let section = $("<p>").addClass().text("Winnable Value of the Pot: $" + pot);
+    $container.prepend(section);
+  }
+
+
+
+//==============================================================================
+// WINNERS
+//==============================================================================
+  $("#winners").submit(function (event) {
+    event.preventDefault();
+    $.ajax({
+    url: '/winners',
+    method: 'POST',
+    success: function (winners) {
+      renderWinners(winners)
+    }
+    });
+
+  });
+
+  function renderWinners(data) {
+    let $container = $("#winnersArticle");
+    data.forEach(function(winnerData) {
+      const section = createWinnerElement(winnerData);
+      $container.append(section);
+   });
+  };
+
+  function createWinnerElement (winner) {
+    let $winnerContent = $("<p>").addClass().text("Rank: " + winner.rank + " , Ticket number: " + winner.ticketNumber + " , Name: " + winner.ticketName + " , Prize value: " + winner.prizeVal);
+
+    return $winnerContent;
+  };
 
 
 });
