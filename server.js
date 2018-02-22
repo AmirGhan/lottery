@@ -4,6 +4,7 @@ const app = express();
 const PORT = 3000;
 const game = new (require('./src/game'))();
 
+app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
@@ -13,8 +14,7 @@ app.get("/", function(req, res) {
 
 app.post("/purchase", function(req, res) {
   let ticket = game.purchase(req.body.name);
-  console.log("Purchased By: " + ticket.name + " , Ticket number: " + ticket.num + ", Price: " + ticket.val);
-  res.redirect("/")
+  res.send(ticket)
 });
 
 app.post("/draw", function(req, res) {
