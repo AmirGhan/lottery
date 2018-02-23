@@ -73,16 +73,15 @@ $( document ).ready(function() {
 
   function renderWinners(data) {
     let $container = $("#winnersArticle");
+    let hr = $("<hr>");
     for (let i = data.length - 1; i < data.length; i--){
      let section = createWinnerElement(data[i]);
-        $container.prepend(section);
-
+        $container.prepend(hr, section);
     }
   };
 
   function createWinnerElement (winner) {
-    let $winnerContent = $("<p>").addClass().text("Rank: " + winner.rank + " , Ticket number: " + winner.ticketNumber + " , Name: " + winner.ticketName + " , Prize value: " + winner.prizeVal);
-
+    let $winnerContent = $("<p>").addClass().text("Rank: " + winner.rank + " , Ticket number: " + winner.ticketNumber + " , Name: " + winner.ticketName + " , Prize value: $" + winner.prizeVal);
     return $winnerContent;
   };
 

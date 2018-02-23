@@ -3,44 +3,91 @@
   <head>
     <meta charset="utf-8">
     <title>Lottery App</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   </head>
 
   <body>
-    <h1>Welcome to the Lottery App</h1>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 10px;">
 
-    <form method="POST" action="/purchase" id="purchase">
-      <div>
-        <label>Enter your name to buy a ticket:</label>
-        <input type="text" name="name" required>
-        <input type="submit" value="Purchase">
+      <div class="container-fluid">
+        <div class="row">
+          <h1 style="text-align: center;">Welcome to the Lottery App</h1>
+
+        </div>
+        <hr>
+
+
+        <div class="row">
+          <div class="col-md-6">
+            <form method="POST" action="/purchase" id="purchase">
+              <div>
+                <label>Enter your name to buy a ticket:</label>
+                <input type="text" name="name" required>
+                <input class="btn btn-default" type="submit" value="Purchase">
+              </div>
+            </form>
+          </div>
+
+          <div class="col-md-2">
+            <form method="POST" action="/draw" id="draw">
+              <input class="btn btn-info" type="submit" value="Draw">
+            </form>
+          </div>
+
+          <div class="col-md-2">
+            <form method="POST" action="/winners" id="winners">
+              <input class="btn btn-success" type="submit" value="Winners">
+            </form>
+
+          </div>
+
+          <div class="col-md-2">
+            <form method="POST" action="/restart">
+              <input class="btn btn-warning" type="submit" value="Restart">
+            </form>
+
+          </div>
+
+
+
+        </div>
+        <hr>
+
+        <div class="row">
+          <div class="col-md-4">
+            <h3>Tickets:</h3>
+            <section id="tickets">
+
+            </section>
+
+          </div>
+          <div class="col-md-3">
+            <h3>Winnable Pot:</h3>
+            <section id="winnablePot">
+
+            </section>
+
+          </div>
+          <div class="col-md-5">
+            <h3>Winners:</h3>
+            <section id="winnersArticle">
+
+            </section>
+          </div>
+
+        </div>
+
       </div>
-    </form>
-
-    <form method="POST" action="/draw" id="draw">
-        <input type="submit" value="draw">
-    </form>
-
-    <form method="POST" action="/winners" id="winners">
-        <input type="submit" value="winners">
-    </form>
-    
-    <form method="POST" action="/restart">
-        <input type="submit" value="restart">
-    </form>
-
-    <section id="winnersArticle">
-
-    </section>
-    <section id="winnablePot">
-
-    </section>
-    <section id="tickets">
-
-    </section>
+    </div>
 
     <!-- jQuery -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
     <!-- Index JS -->
     <script type="text/javascript" src="/scripts/index.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
 </html>
