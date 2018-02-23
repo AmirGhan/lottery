@@ -21,7 +21,7 @@ $( document ).ready(function() {
   function renderTickets(data) {
     let $container = $("#tickets");
     data.forEach(function(ticketData) {
-      const section = createTicketElement(ticketData);
+      let section = createTicketElement(ticketData);
       $container.prepend(section);
    });
   };
@@ -73,10 +73,11 @@ $( document ).ready(function() {
 
   function renderWinners(data) {
     let $container = $("#winnersArticle");
-    data.forEach(function(winnerData) {
-      const section = createWinnerElement(winnerData);
-      $container.append(section);
-   });
+    for (let i = data.length - 1; i < data.length; i--){
+     let section = createWinnerElement(data[i]);
+        $container.prepend(section);
+
+    }
   };
 
   function createWinnerElement (winner) {
